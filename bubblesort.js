@@ -1,22 +1,17 @@
-function binarySearch(arr, val) {
-  let found = isFound(arr, 0, arr.length - 1, val);
-  return found;
+function bubbleSort(arr) {
+let noSwap = true, times =0
+  for (let i = arr.length - 1; i >= 0; i--) {
+    if(!noSwap) break;
+    for (let j = 0; j < i; j++) {
+      if (arr[j] > arr[j + 1]) {
+          let temp = arr[j];
+          arr[j] = arr[j+1];
+          arr[j+1] = temp;
+          noSwap = false;
+      }      
+    }
+  }
+  return arr;
 }
 
-function isFound(arr, start, end, val) {
-  let mid = Math.floor((start + end) / 2);
-  if (val == arr[mid]) {
-    return true;
-  }
-  if (start > end) {
-    return false;
-  }
-  if (val < arr[mid]) {
-    return isFound(arr, 0, mid - 1, val)
-  } else {
-    return isFound(arr, mid + 1, arr.length - 1, val)
-  }
-  return false;
-}
-
-console.log(binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 923, 45, 67, 89, 91, 95, 98], 105));
+console.log(bubbleSort([1, 3, 5, 23, 34, 21, 43, 56, 44]))
