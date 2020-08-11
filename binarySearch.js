@@ -19,4 +19,4 @@ function isFound(arr, start, end, val) {
   return false;
 }
 
-console.log(binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 923, 45, 67, 89, 91, 95, 98], 105));
+console.log(binarySearch([1, 2, 3, 4, 5, 6, 7, 8, 923, 45, 67, 89, 91, 95, 98], 95));
