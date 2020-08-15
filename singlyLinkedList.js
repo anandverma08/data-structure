@@ -79,7 +79,7 @@ class SingleLinkedList {
     addAtIndex (value, index) {
         if (index < 0 || index > this.length) return undefined;
         let newNode = new Node(value);
-        let currentIndex=0;
+        let currentIndex = 0;
         let current = this.head;
         let newTail = current;
         while (currentIndex < index) {
@@ -90,20 +90,33 @@ class SingleLinkedList {
         newTail.next = newNode;
         newNode.next = current;
         this.length++;
-    },
-    reverse(){
+    }
+    reverse () {
         var node = this.head;
         this.head = this.tail;
         this.tail = node;
         let next = null;
         let prev = null;
 
-        for(let i=0;i<this.length;i++){
+        for (let i = 0; i < this.length; i++) {
             next = node.next;
             node.next = prev;
-            
+            prev = node;
+            node = next;
         }
+        return this;
+    }
 
+    getAllValues(){
+        if(!this.head) return [];
+        let vals = []
+        let current = this.head;
+        while(current.next){
+            vals.push(current.val);
+            current = current.next;
+        }
+        vals.push(current.val);
+        return vals;
     }
 }
 
@@ -133,3 +146,6 @@ console.log("list", list);
 
 list.addAtIndex("Wine", 1);
 console.log("list", list);
+
+const allVal = list.getAllValues();
+console.log(allVal);
