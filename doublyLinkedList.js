@@ -58,6 +58,22 @@ class DoublyLinkedList {
         this.length--;
         return vShift;
     }
+    addAtIndex (value, index) {
+        if (index < 0 || index > this.length) return undefined;
+        let newNode = new Node(value);
+        let currentIndex = 0;
+        let current = this.head;
+        while (currentIndex < index) {
+            current = current.next;
+            currentIndex++;
+        }
+        console.log(current.val)
+        newNode.next = current.next;
+        current.next.prev = newNode;
+        current.next = newNode;
+        newNode.prev = current;
+        this.length++;
+    }
     getAllValues(){
         if (!this.head) return [];
         let vals = [];
@@ -88,10 +104,12 @@ dList.push(45);
 
 dList.push(140);
 
-console.log(dList.getAllValues());
-
-const vShift = dList.shift();
-
-console.log(vShift);
 
 console.log(dList.getAllValues());
+dList.addAtIndex(40,2)
+console.log(dList.getAllValues());
+// const vShift = dList.shift();
+
+// console.log(vShift);
+
+//console.log(dList.getAllValues());
